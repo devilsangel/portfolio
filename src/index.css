@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,200;1,9..144,400;1,9..144,600&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@import "tailwindcss";
+
+@source "../src/**/*.{js,jsx,ts,tsx}";
+
+/* ─── Theme overrides ──────────────────────────────────────────── */
+@theme {
+  --font-serif: "Fraunces", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "Instrument Sans", sans-serif;
+}
+
+/* ─── Base styles ──────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #faf7f2;
+    font-family: "Instrument Sans", sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  ::selection {
+    background: #bf4a2f;
+    color: #faf7f2;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #faf7f2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #bf4a2f;
+    border-radius: 3px;
+  }
+}
+
+/* ─── Custom utilities ─────────────────────────────────────────── */
+@utility scroll-pulse {
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+/* ─── Font variation settings for Fraunces ─────────────────────── */
+.font-serif {
+  font-variation-settings: "SOFT" 50;
+}
+
+/* ─── Prose (blog post body) ───────────────────────────────────── */
+.prose {
+  color: #2C2621;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.prose h2 {
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1A1714;
+  letter-spacing: -0.5px;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 50;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1A1714;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  color: #4A433C;
+  margin-bottom: 1.25rem;
+}
+
+.prose strong {
+  color: #2C2621;
+  font-weight: 600;
+}
+
+.prose a {
+  color: #BF4A2F;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #4A433C;
+}
+
+.prose li {
+  margin-bottom: 0.375rem;
+}
+
+.prose ul li {
+  list-style-type: disc;
+}
+
+.prose ol li {
+  list-style-type: decimal;
+}
+
+.prose pre {
+  background: #F3EEE8;
+  border: 1px solid #E4DDD5;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #2C2621;
+}
+
+.prose code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8125rem;
+  background: #F3EEE8;
+  border: 1px solid #E4DDD5;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  color: #BF4A2F;
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.prose blockquote {
+  border-left: 2px solid #BF4A2F;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #6B6058;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #E4DDD5;
+  margin: 2rem 0;
+}
+
+/* ─── Animations ───────────────────────────────────────────────── */
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.4;
+  }
+}

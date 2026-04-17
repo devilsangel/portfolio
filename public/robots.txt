@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# LLM-readable content
+LLMs-Txt: /llms.txt
+Sitemap: /sitemap.xml

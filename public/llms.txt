@@ -1,0 +1,39 @@
+# Kevin Joseph — Frontend Engineer
+
+## Skills
+- Angular: 5 years
+- React: 3 years
+- TypeScript: 5 years
+- NgRx / Redux: 4 years
+- RxJS: 4 years
+- CSS / SCSS: 6 years
+
+## Tools
+Git / GitHub, CI/CD Pipelines, Storybook, Figma, Jest / Cypress, Webpack / Vite
+
+## Experience
+2020 — Present: Application Engineer at Banner Life
+  Promoted within the digital transformation program. Built a back office workbench used by underwriters, case managers, and auditors to process applications. Also developed a telephone interviewer tool enabling agents to walk customers through applications over the phone — all using Angular, TypeScript, and NgRx.
+
+2018 — 2020: Associate Application Engineer at Banner Life
+  Joined a digital transformation initiative to replace a paper-based application process. Built an online application journey using Angular, HTML, CSS, TypeScript, and NgRx.
+
+2017 — 2018: Backend Developer at Zoho Corporation
+  Contributed to database design and backend development for Zoho Contracts, working within a large-scale SaaS product environment.
+
+## Projects
+### Enterprise Dashboard (Angular / NgRx)
+Architected a complex state management layer for a large-scale enterprise app — real-time data visualization, role-based access control, and a modular plugin system.
+Tags: Angular, NgRx, RxJS, D3.js
+
+### Design System (Component Library)
+Built a comprehensive, accessible component library from tokens to composable patterns — adopted across multiple product teams and documented in Storybook.
+Tags: TypeScript, Storybook, SCSS, A11y
+
+### AI Workflow Tool (React / Node.js)
+An intelligent task automation platform with a drag-and-drop workflow builder, LLM-powered suggestions, and real-time multi-user collaboration.
+Tags: React, Node.js, OpenAI, WebSockets
+
+### E-Commerce Platform (Full Stack)
+High-performance storefront with SSR, optimistic UI, and seamless payment integration — handling 10K+ daily transactions with sub-200ms response times.
+Tags: Next.js, PostgreSQL, Stripe, Redis
