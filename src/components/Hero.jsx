@@ -1,8 +1,24 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import DotGrid from "./DotGrid";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const onHome = pathname === "/";
+
+  function scrollTo(id) {
+    if (onHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    }
+  }
+
   useEffect(() => {
     setTimeout(() => setLoaded(true), 250);
   }, []);
@@ -63,7 +79,8 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-3 items-center" style={enter(3)}>
             <a
-              href="#work"
+              href="#"
+              onClick={(e) => { e.preventDefault(); scrollTo("work"); }}
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-6 py-3.5 rounded-sm"
               style={{ background: "#2C2621", color: "#FAF7F2" }}
             >
@@ -79,7 +96,8 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="#contact"
+              href="#"
+              onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}
               className="font-mono text-xs uppercase tracking-wider px-6 py-3.5 border rounded-sm transition-all duration-200 text-[#8A7F73] hover:bg-[#2C2621] hover:text-[#FAF7F2] hover:border-[#2C2621]"
               style={{ borderColor: "#D6CFC6" }}
             >
