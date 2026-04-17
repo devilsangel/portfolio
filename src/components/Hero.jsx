@@ -112,7 +112,7 @@ export default function Hero() {
             </div>
             <div className="h-px my-4" style={{ background: "#E4DDD5" }} />
             {[
-              { label: "Focus", value: "Angular · React · TypeScript" },
+              { label: "Focus", value: "Angular · TypeScript · NgRx" },
               { label: "Location", value: "United States" },
               { label: "Experience", value: "7 years frontend" },
             ].map((f) => (

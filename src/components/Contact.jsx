@@ -6,7 +6,7 @@ export default function Contact() {
   const [hovered, setHovered] = useState(null);
 
   const copy = () => {
-    navigator.clipboard.writeText("kevin@example.com");
+    navigator.clipboard.writeText("josephkevin1995@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -14,7 +14,7 @@ export default function Contact() {
   const links = [
     {
       label: "Email",
-      value: copied ? "Copied!" : "kevin@example.com",
+      value: copied ? "Copied!" : "josephkevin1995@gmail.com",
       action: copy,
       isButton: true,
     },
