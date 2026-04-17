@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-function MobileMenu({ open, onClose }) {
+function MobileMenu({ open, onClose, scrollTo }) {
   if (!open) return null;
   return (
     <div
@@ -21,8 +21,8 @@ function MobileMenu({ open, onClose }) {
       {["Work", "About", "Contact"].map((l) => (
         <a
           key={l}
-          href={`/#${l.toLowerCase()}`}
-          onClick={onClose}
+          href="#"
+          onClick={(e) => { e.preventDefault(); scrollTo(l.toLowerCase()); onClose(); }}
           className="font-serif text-3xl font-semibold"
           style={{ color: "#2C2621" }}
         >
@@ -38,8 +38,8 @@ function MobileMenu({ open, onClose }) {
         Blog
       </Link>
       <a
-        href="/#contact"
-        onClick={onClose}
+        href="#"
+        onClick={(e) => { e.preventDefault(); scrollTo("contact"); onClose(); }}
         className="font-mono text-xs uppercase tracking-widest px-7 py-3 border mt-4"
         style={{ borderColor: "#2C2621", color: "#2C2621" }}
       >
@@ -53,7 +53,19 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const onHome = pathname === "/";
+
+  function scrollTo(id) {
+    if (onHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    }
+  }
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
@@ -63,7 +75,7 @@ export default function Nav() {
 
   return (
     <>
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} scrollTo={scrollTo} />
       <nav
         className={`fixed top-0 left-0 right-0 z-40 flex justify-between items-center transition-all duration-300 px-5 md:px-9 lg:px-14 ${scrolled ? "py-3.5 border-b" : "py-5 border-b border-transparent"}`}
         style={{
@@ -72,20 +84,21 @@ export default function Nav() {
           borderColor: scrolled ? "#E4DDD5" : "transparent",
         }}
       >
-        <a
-          href="/"
+        <Link
+          to="/"
           className="font-serif text-base font-normal"
           style={{ color: "#2C2621", letterSpacing: "0.5px" }}
         >
           kevin joseph
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-9">
           {["Work", "About", "Contact"].map((l) => (
             <a
               key={l}
-              href={onHome ? `#${l.toLowerCase()}` : `/#${l.toLowerCase()}`}
+              href="#"
+              onClick={(e) => { e.preventDefault(); scrollTo(l.toLowerCase()); }}
               className="relative font-mono text-xs uppercase tracking-widest text-[#8A7F73] hover:text-[#2C2621] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#2C2621] after:transition-all after:duration-200 hover:after:w-full"
             >
               {l}
@@ -102,7 +115,8 @@ export default function Nav() {
             Blog
           </Link>
           <a
-            href={onHome ? "#contact" : "/#contact"}
+            href="#"
+            onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}
             className="font-mono text-xs uppercase tracking-widest px-5 py-2.5 border rounded-sm transition-all duration-200 text-[#2C2621] hover:bg-[#2C2621] hover:text-[#FAF7F2]"
             style={{ borderColor: "#2C2621" }}
           >
