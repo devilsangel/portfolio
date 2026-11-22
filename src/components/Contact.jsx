@@ -18,8 +18,8 @@ export default function Contact() {
       action: copy,
       isButton: true,
     },
-    { label: "LinkedIn", value: "Profile →", href: "https://linkedin.com" },
-    { label: "GitHub", value: "Repos →", href: "https://github.com" },
+    { label: "LinkedIn", value: "Profile →", href: "https://www.linkedin.com/in/kevinjoseph95/" },
+    { label: "GitHub", value: "Repos →", href: "https://github.com/devilsangel" },
   ];
 
   return (

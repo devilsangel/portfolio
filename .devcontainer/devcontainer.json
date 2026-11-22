@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:5-26-trixie",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		// Installs the Claude Code CLI (`claude`)
+		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+	},
+
+	// Persist Claude Code login/settings across container rebuilds
+	"mounts": [
+		"source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"
+	],
+	"containerEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/node/.claude"
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Named volumes are created root-owned; hand the Claude config dir to the 'node' user.
+	"postCreateCommand": "sudo chown -R node:node /home/node/.claude",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"anthropic.claude-code"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

@@ -1,4 +1,4 @@
-import { SKILLS, TOOLS, EXPERIENCE, PROJECTS } from "../src/data/index.js";
+import { SKILLS, TOOLS, EXPERIENCE, EDUCATION, PROJECTS } from "../src/data/index.js";
 import { writeFileSync } from "fs";
 
 const lines = [
@@ -16,6 +16,9 @@ const lines = [
     `  ${e.summary}`,
     ``,
   ]),
+  `## Education & Certifications`,
+  ...EDUCATION.map((e) => `- ${e.title}, ${e.org} (${e.period})`),
+  ``,
   `## Projects`,
   ...PROJECTS.flatMap((p) => [
     `### ${p.title} (${p.subtitle})`,
