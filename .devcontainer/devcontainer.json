@@ -8,12 +8,15 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		// Installs the Claude Code CLI (`claude`)
-		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+		// Installs the GitHub CLI (`gh`)
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 
-	// Persist Claude Code login/settings across container rebuilds
+	// Persist Claude Code and GitHub CLI login/settings across container rebuilds
 	"mounts": [
-		"source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"
+		"source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume",
+		"source=gh-config-${devcontainerId},target=/home/node/.config/gh,type=volume"
 	],
 	"containerEnv": {
 		"CLAUDE_CONFIG_DIR": "/home/node/.claude"
@@ -22,8 +25,9 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Named volumes are created root-owned; hand the Claude config dir to the 'node' user.
-	"postCreateCommand": "sudo chown -R node:node /home/node/.claude",
+	// Named volumes are created root-owned; hand the config dirs (and ~/.config, which
+	// Docker may create as root for the gh mount) to the 'node' user.
+	"postCreateCommand": "sudo chown node:node /home/node/.config && sudo chown -R node:node /home/node/.claude /home/node/.config/gh",
 
 	// Configure tool-specific properties.
 	"customizations": {
