@@ -1,8 +1,10 @@
-import { SKILLS, TOOLS, EXPERIENCE, EDUCATION, PROJECTS } from "../src/data/index.js";
+import { SKILLS, TOOLS, EXPERIENCE, EDUCATION, PROJECTS, RESUME_URL } from "../src/data/index.js";
 import { writeFileSync } from "fs";
 
 const lines = [
   `# Kevin Joseph — Frontend Engineer`,
+  ``,
+  `Resume: ${RESUME_URL}`,
   ``,
   `## Skills`,
   ...SKILLS.map((s) => `- ${s.name}: ${s.years} years`),

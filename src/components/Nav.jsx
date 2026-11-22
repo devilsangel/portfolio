@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { RESUME_URL } from "../data";
 
 function MobileMenu({ open, onClose, scrollTo }) {
   if (!open) return null;
@@ -37,6 +38,16 @@ function MobileMenu({ open, onClose, scrollTo }) {
       >
         Blog
       </Link>
+      <a
+        href={RESUME_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClose}
+        className="font-serif text-3xl font-semibold"
+        style={{ color: "#2C2621" }}
+      >
+        Resume
+      </a>
       <a
         href="#"
         onClick={(e) => { e.preventDefault(); scrollTo("contact"); onClose(); }}
@@ -114,6 +125,14 @@ export default function Nav() {
           >
             Blog
           </Link>
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative font-mono text-xs uppercase tracking-widest text-[#8A7F73] hover:text-[#2C2621] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#2C2621] after:transition-all after:duration-200 hover:after:w-full"
+          >
+            Resume ↗
+          </a>
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}

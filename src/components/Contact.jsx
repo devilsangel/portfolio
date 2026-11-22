@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
+import { RESUME_URL } from "../data";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -20,6 +21,7 @@ export default function Contact() {
     },
     { label: "LinkedIn", value: "Profile →", href: "https://www.linkedin.com/in/kevinjoseph95/" },
     { label: "GitHub", value: "Repos →", href: "https://github.com/devilsangel" },
+    { label: "Resume", value: "View →", href: RESUME_URL },
   ];
 
   return (

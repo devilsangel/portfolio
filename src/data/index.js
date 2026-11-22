@@ -29,3 +29,5 @@ export const EDUCATION = [
   { title: "B.Tech. Computer Science and Engineering", org: "College of Engineering Trivandrum", period: "2013 — 2017" },
   { title: "Azure AI Cloud Developer Associate", org: "Microsoft Certified", period: "2026" },
 ];
+
+export const RESUME_URL = "https://resume.josephkevin.dev";

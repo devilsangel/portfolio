@@ -1,5 +1,7 @@
 # Kevin Joseph — Frontend Engineer
 
+Resume: https://resume.josephkevin.dev
+
 ## Skills
 - Angular: 8 years
 - TypeScript: 8 years
