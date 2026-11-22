@@ -1,11 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RESUME_URL } from "../data";
 
 function MobileMenu({ open, onClose, scrollTo }) {
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const panel = panelRef.current;
+    const previouslyFocused = document.activeElement;
+    const focusables = () => panel.querySelectorAll("a[href], button");
+
+    focusables()[0]?.focus();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      // Keep keyboard focus inside the open menu.
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+      previouslyFocused?.focus?.();
+    };
+  }, [open, onClose]);
+
   if (!open) return null;
   return (
     <div
+      ref={panelRef}
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
       className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8"
       style={{
         background: "rgba(250,247,242,0.97)",
@@ -13,11 +57,13 @@ function MobileMenu({ open, onClose, scrollTo }) {
       }}
     >
       <button
+        type="button"
         onClick={onClose}
+        aria-label="Close menu"
         className="absolute top-5 right-6 text-2xl cursor-pointer bg-transparent border-none"
         style={{ color: "#2C2621" }}
       >
-        ✕
+        <span aria-hidden="true">✕</span>
       </button>
       {["Work", "About", "Contact"].map((l) => (
         <a
@@ -78,6 +124,8 @@ export default function Nav() {
     }
   }
 
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", h, { passive: true });
@@ -86,8 +134,9 @@ export default function Nav() {
 
   return (
     <>
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} scrollTo={scrollTo} />
+      <MobileMenu open={menuOpen} onClose={closeMenu} scrollTo={scrollTo} />
       <nav
+        aria-label="Main"
         className={`fixed top-0 left-0 right-0 z-40 flex justify-between items-center transition-all duration-300 px-5 md:px-9 lg:px-14 ${scrolled ? "py-3.5 border-b" : "py-5 border-b border-transparent"}`}
         style={{
           background: scrolled ? "rgba(250,247,242,0.92)" : "transparent",
@@ -131,7 +180,7 @@ export default function Nav() {
             rel="noopener noreferrer"
             className="relative font-mono text-xs uppercase tracking-widest text-[#8A7F73] hover:text-[#2C2621] transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#2C2621] after:transition-all after:duration-200 hover:after:w-full"
           >
-            Resume ↗
+            Resume <span aria-hidden="true">↗</span>
           </a>
           <a
             href="#"
@@ -145,12 +194,16 @@ export default function Nav() {
 
         {/* Hamburger */}
         <button
+          type="button"
           onClick={() => setMenuOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           className="lg:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer"
         >
-          <span className="block w-5 h-px" style={{ background: "#2C2621" }} />
-          <span className="block w-5 h-px" style={{ background: "#2C2621" }} />
-          <span className="block w-3.5 h-px" style={{ background: "#2C2621" }} />
+          <span aria-hidden="true" className="block w-5 h-px" style={{ background: "#2C2621" }} />
+          <span aria-hidden="true" className="block w-5 h-px" style={{ background: "#2C2621" }} />
+          <span aria-hidden="true" className="block w-3.5 h-px" style={{ background: "#2C2621" }} />
         </button>
       </nav>
     </>

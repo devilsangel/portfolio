@@ -36,6 +36,8 @@ The output is in the `dist/` folder — ready to deploy to Vercel, Netlify, or a
 - **Experience** — edit the `EXPERIENCE` array
 - **Colors** — the accent color `#BF4A2F` (terracotta) appears throughout; search and replace to change it
 - **Email / Links** — update the contact section with your real email, LinkedIn, and GitHub URLs
+- **Site URL, email, resume link** — `SITE_URL`, `EMAIL` and `RESUME_URL` in `src/data/index.js`. `SITE_URL` drives the sitemap, RSS feed and canonical/OG URLs; the absolute URLs in `index.html` and `public/robots.txt` must match it
+- **Generated files** — `npm run dev`/`build` regenerate `public/llms.txt`, `public/sitemap.xml` and `public/rss.xml`
 
 ## Deploy to Vercel
 

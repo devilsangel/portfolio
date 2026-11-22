@@ -30,3 +30,13 @@ export const posts = Object.entries(modules)
 export function getPost(slug) {
   return posts.find((p) => p.slug === slug) ?? null;
 }
+
+export function formatDate(dateStr) {
+  // Dates are plain YYYY-MM-DD; format in UTC so they don't shift a day in US time zones.
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}

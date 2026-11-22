@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kevin Joseph — Blog</title>
+    <link>https://josephkevin.dev/blog</link>
+    <description>Thoughts on frontend engineering, design systems, and the craft of building interfaces.</description>
+    <language>en-us</language>
+    <atom:link href="https://josephkevin.dev/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Frontend Performance That Actually Matters</title>
+      <link>https://josephkevin.dev/blog/frontend-performance</link>
+      <guid>https://josephkevin.dev/blog/frontend-performance</guid>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+      <description>Not all performance work is equal. Here's how I prioritize what to fix — and what to ignore.</description>
+      <category>Performance</category>
+      <category>React</category>
+      <category>Next.js</category>
+    </item>
+    <item>
+      <title>State Management Patterns I Actually Use</title>
+      <link>https://josephkevin.dev/blog/state-management-patterns</link>
+      <guid>https://josephkevin.dev/blog/state-management-patterns</guid>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
+      <description>After five years with NgRx and three with Redux, here's what I've learned about when to reach for a state manager — and when not to.</description>
+      <category>Angular</category>
+      <category>React</category>
+      <category>NgRx</category>
+      <category>Redux</category>
+    </item>
+    <item>
+      <title>Building a Design System That Scales</title>
+      <link>https://josephkevin.dev/blog/building-a-design-system</link>
+      <guid>https://josephkevin.dev/blog/building-a-design-system</guid>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+      <description>What I learned architecting a component library adopted across five product teams — from design tokens to composable patterns.</description>
+      <category>TypeScript</category>
+      <category>Design Systems</category>
+      <category>Storybook</category>
+    </item>
+  </channel>
+</rss>

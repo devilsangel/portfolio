@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
-import { posts } from "../lib/posts";
-
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
+import { posts, formatDate } from "../lib/posts";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function BlogList() {
+  usePageMeta({
+    title: "Blog",
+    description: "Thoughts on frontend engineering, design systems, and the craft of building interfaces.",
+    path: "/blog",
+  });
   return (
     <section className="px-5 md:px-9 lg:px-14 pt-32 pb-24 max-w-4xl mx-auto">
       <Reveal>

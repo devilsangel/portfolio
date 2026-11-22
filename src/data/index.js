@@ -31,3 +31,8 @@ export const EDUCATION = [
 ];
 
 export const RESUME_URL = "https://resume.josephkevin.dev";
+export const EMAIL = "josephkevin1995@gmail.com";
+// Canonical public URL of this site; used for sitemap, RSS and link previews.
+export const SITE_URL = "https://josephkevin.dev";
+export const SITE_TITLE = "Kevin Joseph — Frontend Engineer";
+export const SITE_DESCRIPTION = "Portfolio of Kevin Joseph, a frontend engineer with 8+ years building Angular and TypeScript apps, design systems, and AI-assisted workflows.";

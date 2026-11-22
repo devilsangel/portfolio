@@ -1,21 +1,27 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { RESUME_URL } from "../data";
+import { EMAIL, RESUME_URL } from "../data";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [hovered, setHovered] = useState(null);
 
-  const copy = () => {
-    navigator.clipboard.writeText("josephkevin1995@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  // Copy the address; if the clipboard isn't available (insecure context,
+  // permission denied), fall back to opening the visitor's mail client.
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
   };
 
   const links = [
     {
       label: "Email",
-      value: copied ? "Copied!" : "josephkevin1995@gmail.com",
+      value: copied ? "Copied!" : EMAIL,
       action: copy,
       isButton: true,
     },
@@ -34,7 +40,7 @@ export default function Contact() {
           className="font-mono text-sm tracking-wider block mb-3"
           style={{ color: "#BF4A2F" }}
         >
-          03
+          04
         </span>
       </Reveal>
 
@@ -68,7 +74,7 @@ export default function Contact() {
             const isH = hovered === i;
             const El = link.isButton ? "button" : "a";
             const extra = link.isButton
-              ? { onClick: link.action }
+              ? { type: "button", onClick: link.action, "aria-label": `Copy email address ${EMAIL}` }
               : {
                   href: link.href,
                   target: "_blank",
@@ -99,7 +105,9 @@ export default function Contact() {
                 >
                   {link.label}
                 </span>
-                <span className="text-sm font-medium">{link.value}</span>
+                <span className="text-sm font-medium" aria-live={link.isButton ? "polite" : undefined}>
+                  {link.value}
+                </span>
               </El>
             );
           })}
