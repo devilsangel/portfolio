@@ -61,6 +61,14 @@
   animation: scrollPulse 2.2s ease-in-out infinite;
 }
 
+@utility marquee {
+  animation: marquee 45s linear infinite;
+}
+
+@utility caret-blink {
+  animation: caretBlink 1s steps(1) infinite;
+}
+
 /* ─── Font variation settings for Fraunces ─────────────────────── */
 .font-serif {
   font-variation-settings: "SOFT" 50;
@@ -175,6 +183,37 @@
 }
 
 /* ─── Animations ───────────────────────────────────────────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .scroll-pulse,
+  .caret-blink {
+    animation: none;
+  }
+}
+
 @keyframes scrollPulse {
   0%,
   100% {

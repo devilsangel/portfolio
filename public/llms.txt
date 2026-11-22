@@ -1,39 +1,52 @@
 # Kevin Joseph — Frontend Engineer
 
 ## Skills
-- Angular: 5 years
-- React: 3 years
-- TypeScript: 5 years
-- NgRx / Redux: 4 years
-- RxJS: 4 years
-- CSS / SCSS: 6 years
+- Angular: 8 years
+- TypeScript: 8 years
+- JavaScript: 8 years
+- RxJS: 8 years
+- HTML / SCSS: 8 years
+- Nx: 4 years
 
 ## Tools
-Git / GitHub, CI/CD Pipelines, Storybook, Figma, Jest / Cypress, Webpack / Vite
+NgRx, Jest / Jasmine, Storybook, Nx Monorepo, SonarQube, GitHub Actions, Docker, PostgreSQL, SignalR, Datadog, Claude Code, Azure AI
 
 ## Experience
-2020 — Present: Application Engineer at Banner Life
-  Promoted within the digital transformation program. Built a back office workbench used by underwriters, case managers, and auditors to process applications. Also developed a telephone interviewer tool enabling agents to walk customers through applications over the phone — all using Angular, TypeScript, and NgRx.
+2020 — Present: Application Engineer at Banner Life Insurance
+  Co-founded a 50+ component Angular library used by 6 applications, and built micro-libraries for auth, error handling, metrics and SignalR messaging. Co-led the move to an Nx monorepo with automated GitHub Actions releases, and led the test migration to Jest. Built the frontends for two internal AI assistants, launched a company-wide Claude Code plugin marketplace, and mentor junior engineers on design systems.
 
-2018 — 2020: Associate Application Engineer at Banner Life
-  Joined a digital transformation initiative to replace a paper-based application process. Built an online application journey using Angular, HTML, CSS, TypeScript, and NgRx.
+2018 — 2020: Associate Application Engineer at Banner Life Insurance
+  Led frontend development of a rules-driven Angular app replacing a paper-based insurance process: instant decision rates from under 4% to 46%, exam-free applications from 0% to 80%. Built the Application Manager dashboard, cutting underwriting cycle time from 50+ days to about 11, and established the team's unit testing practices.
 
-2017 — 2018: Backend Developer at Zoho Corporation
-  Contributed to database design and backend development for Zoho Contracts, working within a large-scale SaaS product environment.
+2017 — 2018: Member Technical Staff at Zoho Corp.
+  Spearheaded early data modeling for Zoho Contract Management using PostgreSQL, reducing data redundancy by 20%. Collaborated in a 13-member team implementing backend APIs using PostgreSQL, Java, and an internal Zoho framework.
+
+## Education & Certifications
+- M.S. Computer Science, Artificial Intelligence, Georgia Institute of Technology (Expected 2028)
+- B.Tech. Computer Science and Engineering, College of Engineering Trivandrum (2013 — 2017)
+- Azure AI Cloud Developer Associate, Microsoft Certified (2026)
 
 ## Projects
-### Enterprise Dashboard (Angular / NgRx)
-Architected a complex state management layer for a large-scale enterprise app — real-time data visualization, role-based access control, and a modular plugin system.
-Tags: Angular, NgRx, RxJS, D3.js
+### Shared Component Library (Angular / Storybook)
+Co-founded and grew an Angular component library to 50+ reusable components, documented in Storybook and shared across 6 applications in three product lines.
+Tags: Angular, TypeScript, Storybook, SCSS
 
-### Design System (Component Library)
-Built a comprehensive, accessible component library from tokens to composable patterns — adopted across multiple product teams and documented in Storybook.
-Tags: TypeScript, Storybook, SCSS, A11y
+### Claude Code Plugin Marketplace (AI-Assisted Development)
+Set up a company-wide Claude Code plugin marketplace and built its frontend plugin: hooks, agents and workflows that cut typical feature delivery from 1–2 days to 1–2 hours for 10 developers while keeping new code above 80% test coverage.
+Tags: Claude Code, Agents, Hooks, Workflows
 
-### AI Workflow Tool (React / Node.js)
-An intelligent task automation platform with a drag-and-drop workflow builder, LLM-powered suggestions, and real-time multi-user collaboration.
-Tags: React, Node.js, OpenAI, WebSockets
+### Internal AI Assistants (Angular / RAG)
+Built the Angular frontends for two internal AI assistants: a multi-model chat with model switching, and a RAG assistant with per-department document management that grew from a Licensing proof of concept to Underwriting and Audit.
+Tags: Angular, TypeScript, RAG, Azure AI
 
-### E-Commerce Platform (Full Stack)
-High-performance storefront with SSR, optimistic UI, and seamless payment integration — handling 10K+ daily transactions with sub-200ms response times.
-Tags: Next.js, PostgreSQL, Stripe, Redis
+### Frontend Platform & Monorepo (Nx / GitHub Actions)
+Architected micro-libraries for auth, error handling, metrics and real-time messaging, co-led their move into an Nx monorepo, and replaced manual npm releases with automated CI/CD gated by SonarQube, Xray and unit tests.
+Tags: Nx, GitHub Actions, SignalR, Datadog
+
+### Online Application System (Angular / TypeScript)
+Led frontend development replacing a paper-based life insurance process. Instant decision rates rose from under 4% to 46%, and exam-free applications from 0% to 80%.
+Tags: Angular, TypeScript, RxJS, SCSS
+
+### Application Manager (Angular / TypeScript)
+Built an internal dashboard for underwriters to manage assigned cases and auto-generated tasks, cutting the average underwriting cycle from 50+ days to about 11. Later extended it to give external agents real-time application status.
+Tags: Angular, TypeScript, RxJS, REST API

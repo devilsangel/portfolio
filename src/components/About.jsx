@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import { SKILLS, TOOLS, EXPERIENCE } from "../data";
+import { SKILLS, TOOLS, EXPERIENCE, EDUCATION } from "../data";
 
 function SkillRow({ skill, index }) {
   return (
@@ -143,6 +143,34 @@ export default function About() {
           ))}
 
           <Reveal delay={0.5}>
+            <h3
+              className="font-mono text-xs uppercase tracking-widest mb-5 mt-2"
+              style={{ color: "#BF4A2F" }}
+            >
+              Education & Certifications
+            </h3>
+            {EDUCATION.map((e) => (
+              <div
+                key={e.title}
+                className="flex justify-between items-baseline gap-4 py-3 border-b"
+                style={{ borderColor: "#E4DDD5" }}
+              >
+                <div>
+                  <span className="text-sm font-medium block" style={{ color: "#2C2621" }}>
+                    {e.title}
+                  </span>
+                  <span className="text-sm" style={{ color: "#8A7F73" }}>
+                    {e.org}
+                  </span>
+                </div>
+                <span className="font-mono text-xs shrink-0" style={{ color: "#A89B8F" }}>
+                  {e.period}
+                </span>
+              </div>
+            ))}
+          </Reveal>
+
+          <Reveal delay={0.55}>
             <div
               className="mt-9 p-5 md:p-7 rounded-lg border"
               style={{ background: "#FAF7F2", borderColor: "#E4DDD5" }}

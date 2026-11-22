@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import DotGrid from "./DotGrid";
+import HeroCodeCard from "./HeroCodeCard";
+import TechMarquee from "./TechMarquee";
+import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 export default function Hero() {
-  const [loaded, setLoaded] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
+  const [timerLoaded, setLoaded] = useState(false);
+  const loaded = timerLoaded || reducedMotion;
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const onHome = pathname === "/";
@@ -20,19 +25,20 @@ export default function Hero() {
   }
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 250);
+    const id = setTimeout(() => setLoaded(true), 250);
+    return () => clearTimeout(id);
   }, []);
 
   const enter = (i) => ({
     opacity: loaded ? 1 : 0,
     transform: loaded ? "translateY(0)" : "translateY(44px)",
-    transition: `all 1s cubic-bezier(0.22,1,0.36,1) ${0.35 + i * 0.18}s`,
+    transition: reducedMotion ? "none" : `all 1s cubic-bezier(0.22,1,0.36,1) ${0.35 + i * 0.18}s`,
   });
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center px-5 md:px-9 lg:px-14 pt-24 lg:pt-28 pb-20 overflow-hidden"
+      className="relative min-h-screen flex items-center px-5 md:px-9 lg:px-14 pt-24 lg:pt-28 pb-40 lg:pb-44 overflow-hidden"
     >
       <div className="hidden md:block">
         <DotGrid />
@@ -49,7 +55,7 @@ export default function Hero() {
               className="inline-block w-6 md:w-9 h-px"
               style={{ background: "#BF4A2F" }}
             />
-            Frontend Engineer · 7 years
+            Frontend Engineer · 8+ years
           </p>
 
           <h1
@@ -72,8 +78,9 @@ export default function Hero() {
             className="text-base leading-relaxed max-w-lg mb-8 md:mb-10"
             style={{ color: "#6B6058", ...enter(2) }}
           >
-            Software engineer specializing in scalable frontend architectures,
-            design systems, and state management. Currently exploring senior
+            Frontend engineer building accessible Angular and TypeScript apps,
+            from shared component libraries and CI/CD pipelines to internal AI
+            assistants and AI-assisted workflows. Currently exploring senior
             roles where craft and engineering depth matter.
           </p>
 
@@ -107,13 +114,14 @@ export default function Hero() {
         </div>
 
         {/* Right card */}
-        <div className="lg:col-span-2 flex lg:justify-end" style={enter(2)}>
+        <div className="lg:col-span-2 flex flex-col gap-4 lg:items-end">
           <div
             className="w-full max-w-xs lg:max-w-sm p-6 md:p-8 rounded-lg border"
             style={{
               borderColor: "#E4DDD5",
               background: "rgba(250,247,242,0.85)",
               backdropFilter: "blur(12px)",
+              ...enter(2),
             }}
           >
             <div className="flex items-center gap-2.5 mb-1">
@@ -131,8 +139,8 @@ export default function Hero() {
             <div className="h-px my-4" style={{ background: "#E4DDD5" }} />
             {[
               { label: "Focus", value: "Angular · TypeScript · NgRx" },
-              { label: "Location", value: "United States" },
-              { label: "Experience", value: "7 years frontend" },
+              { label: "Location", value: "DC–Baltimore Area" },
+              { label: "Experience", value: "8+ years frontend" },
             ].map((f) => (
               <div key={f.label} className="flex justify-between items-center py-2">
                 <span
@@ -147,7 +155,28 @@ export default function Hero() {
               </div>
             ))}
           </div>
+
+          <div className="hidden lg:block w-full max-w-xs lg:max-w-sm" style={enter(3)}>
+            <HeroCodeCard start={loaded} />
+          </div>
         </div>
+      </div>
+
+      {/* Scroll cue + tech marquee */}
+      <div className="absolute bottom-0 inset-x-0 z-10" style={enter(4)}>
+        <div className="hidden md:flex justify-center mb-6">
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); scrollTo("work"); }}
+            className="flex flex-col items-center gap-2 font-mono uppercase tracking-widest transition-colors duration-200 text-[#A89B8F] hover:text-[#BF4A2F]"
+            style={{ fontSize: "10px" }}
+            aria-label="Scroll to selected work"
+          >
+            Scroll
+            <span className="scroll-pulse block w-px h-8" style={{ background: "#BF4A2F" }} />
+          </a>
+        </div>
+        <TechMarquee />
       </div>
     </section>
   );
