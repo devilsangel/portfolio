@@ -17,7 +17,7 @@ function ProjectCard({ project, index }) {
   };
 
   return (
-    <Reveal delay={index * 0.1}>
+    <Reveal delay={index * 0.1} className="h-full">
       <div
         ref={ref}
         onMouseEnter={() => setHovered(true)}
@@ -26,7 +26,7 @@ function ProjectCard({ project, index }) {
           setHovered(false);
           setTilt({ x: 0, y: 0 });
         }}
-        className="relative p-5 md:p-7 border rounded-xl cursor-default"
+        className="relative h-full flex flex-col p-5 md:p-7 border rounded-xl cursor-default"
         style={{
           borderColor: "#E4DDD5",
           background: "#FDFCFA",
@@ -84,7 +84,7 @@ function ProjectCard({ project, index }) {
         <p className="text-sm leading-relaxed mb-4" style={{ color: "#6B6058" }}>
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.tags.map((t) => (
             <span
               key={t}
